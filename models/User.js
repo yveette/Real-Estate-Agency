@@ -1,4 +1,4 @@
-const { Schema, model, Types: { ObjectId } = require('mongoose');
+const { Schema, model, Types: { ObjectId } } = require('mongoose');
 
 // TODO change user model
 // TODO add validation
