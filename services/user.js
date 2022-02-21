@@ -3,7 +3,7 @@ const { hash, compare } = require('bcrypt');
 
 // TODO add all fields required
 // TODO add validation
-async function register(username, password) {
+async function register(name, username, password) {
     const existing = await getUserByUsername(username);
 
     if (existing) {
@@ -13,6 +13,7 @@ async function register(username, password) {
     const hashedPassword = await hash(password, 10);
 
     const user = new User({
+        name,
         username,
         hashedPassword
     });
@@ -21,7 +22,6 @@ async function register(username, password) {
     return user;
 }
 
-//TODO change identifier
 async function login(username, password) {
     const user = await getUserByUsername(username);
 
@@ -37,7 +37,6 @@ async function login(username, password) {
     return user;
 }
 
-// TODO identify user by given identifier
 async function getUserByUsername(username) {
     const user = User.findOne({ username: new RegExp(`^${username}$`, 'i') });
     return user;

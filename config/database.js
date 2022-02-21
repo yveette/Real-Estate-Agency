@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 require('../models/User');
 
 // TODO change database name
-const dbName = 'wildlife';
+const dbName = 'estateAgency';
 const connnectionString = `mongodb://localhost:27017/${dbName}`;
 
 module.exports = async (app) => {
