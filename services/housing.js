@@ -6,6 +6,11 @@ async function createHousing(trip) {
     await result.save();
 }
 
+async function getLastThree() {
+    return Housing.find().sort({ createdAt: -1 }).limit(3).lean();
+}
+
 module.exports = {
     createHousing,
+    getLastThree
 };

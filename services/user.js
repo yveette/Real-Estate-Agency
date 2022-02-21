@@ -1,7 +1,6 @@
 const User = require('../models/User');
 const { hash, compare } = require('bcrypt');
 
-// TODO add all fields required
 // TODO add validation
 async function register(name, username, password) {
     const existing = await getUserByUsername(username);
