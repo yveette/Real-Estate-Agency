@@ -29,10 +29,30 @@ async function joinRent(houseId, userId) {
     await house.save();
 }
 
+async function updateHouse(id, house) {
+    const existing = await Housing.findById(id);
+
+    existing.name = house.name;
+    existing.type = house.type;
+    existing.year = house.year;
+    existing.city = house.city;
+    existing.homeImg = house.homeImg;
+    existing.description = house.description;
+    existing.pieces = house.pieces;
+
+    await existing.save();
+}
+
+async function deleteById(id) {
+    await Housing.findByIdAndDelete(id);
+}
+
 module.exports = {
     createHousing,
     getLastThree,
     getAll,
     getHouseById,
-    joinRent
+    joinRent,
+    updateHouse,
+    deleteById
 };
