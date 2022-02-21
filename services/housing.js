@@ -10,7 +10,12 @@ async function getLastThree() {
     return Housing.find().sort({ createdAt: -1 }).limit(3).lean();
 }
 
+async function getAll(){
+    return Housing.find({}).lean();
+}
+
 module.exports = {
     createHousing,
-    getLastThree
+    getLastThree,
+    getAll
 };
