@@ -47,6 +47,10 @@ async function deleteById(id) {
     await Housing.findByIdAndDelete(id);
 }
 
+async function getByType(find) {
+    return Housing.find({ type: { $regex: find, $options: 'i' } }).lean();
+}
+
 module.exports = {
     createHousing,
     getLastThree,
@@ -54,5 +58,6 @@ module.exports = {
     getHouseById,
     joinRent,
     updateHouse,
-    deleteById
+    deleteById,
+    getByType
 };

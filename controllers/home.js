@@ -1,6 +1,6 @@
 const { isUser, isOwner } = require('../middleware/guards');
 const preload = require('../middleware/preload');
-const { getLastThree, getAll, joinRent } = require('../services/housing');
+const { getLastThree, getAll, joinRent, getByType } = require('../services/housing');
 
 const router = require('express').Router();
 
@@ -17,7 +17,7 @@ router.get('/catalog', async (req, res) => {
 router.get('/catalog/:id', preload(true), (req, res) => {
     const house = res.locals.data;
     house.remainingRent = house.pieces - house.renters.length;
-    
+
     if (req.session.user) {
         house.hasUser = true;
         house.isOwner = req.session.user?._id == house.owner._id;
@@ -28,7 +28,7 @@ router.get('/catalog/:id', preload(true), (req, res) => {
     }
 
     house.rentersNames = [];
-    if(house.renters ){
+    if (house.renters) {
         house.renters.forEach(r => house.rentersNames.push(r.name));
     }
     house.rentersNames = house.rentersNames.join(', ');
@@ -48,6 +48,19 @@ router.get('/rent/:id', isUser(), async (req, res) => {
         res.redirect('/catalog/' + id);
     }
 
+});
+
+router.get('/search', isUser(), (req, res) => {
+    res.render('search', { title: 'Search Page' });
+});
+
+router.post('/search', isUser(), async (req, res) => {
+    const search = req.body.search;
+
+    res.locals.results = await getByType(search);
+    res.locals.search = search;
+
+    res.render('search', { title: 'Search Page' });
 });
 
 module.exports = router;

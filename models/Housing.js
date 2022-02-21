@@ -4,7 +4,13 @@ const URL_PATTERN = /^https?:\/\/(.+)/;
 
 const houseSchema = new Schema({
     name: { type: String, required: [true, 'Name is required!'], minlength: [6, 'Name should be at least 6 characters!'] },
-    type: { type: String, enum: ['Apartment', 'Villa', 'House'], required: [true, 'Type should be - Apartment, Villa or House.'] },
+    type: {
+        type: String, enum: {
+            values: ['Apartment', 'Villa', 'House'],
+            message: 'Type should be - Apartment, Villa or House.'
+        },
+        required: [true, 'Type should be - Apartment, Villa or House.']
+    },
     year: {
         type: Number, required: [true, 'Year is required!'],
         min: [1850, 'Year should be between 1850 and 2021'],
