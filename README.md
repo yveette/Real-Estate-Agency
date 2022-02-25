@@ -6,7 +6,7 @@
 
 #### SoftUni - JS Back-end - Exam Retake 2021
 
-The visitors can view the Home page and Housing for rent catalog with available offers, they can also register with a name, username, and password, which will allow them to create their own offers for housing, rent a home(if the current user is not the owner of the housing offer and if there are vacant housing). Authors can edit or delete posts at any time.
+The visitors can view the **Home page** and **Housing for rent catalog** with available offers, they can also **register** with a **name**, **username**, and **password**, which will allow them to **create** their own offers for housing, **rent** a home(if the current user is not the owner of the housing offer and if there are vacant housing). Authors can **edit** or **delete** posts at any time.
 
 ## Used in this project:
 
@@ -19,7 +19,7 @@ The visitors can view the Home page and Housing for rent catalog with available 
 - **Bcrypt** for hashing the password
 - Application must start from file "index.js" on port 3000
 
-## Start:
+## Start
 - `$ git clone https://github.com/yveette/Real-Estate-Agency`
 - `npm install`
 - `npm run start`
@@ -27,17 +27,17 @@ The visitors can view the Home page and Housing for rent catalog with available 
 - can use the GUI for MongoDB -> [MongoDB Compass](https://www.mongodb.com/products/compass)
 - enjoy
 
-## Users:
+## Users
 
-* Users (Logged In)
-    * View **Home page** and all other pages with logged-in navigation
-    * View  **Housing** for rent
-    * **Create** а new housing offer  [Create Offer]
-    * Access housing **details** page [Details]
-    * **Renting** a home (if the current user is not the owner of the housing offer and if there are vacant housing)
-    * **Delete** or **Edit** housing depending on user's authentication (only for owner of the current offer for housing)
+* Users (Logged In) :
+    * Can view **Home page** and all other pages with logged-in navigation
+    * Can view  **Housing** for rent
+    * Can **Create** а new housing offer  [Create Offer]
+    * Can access housing **details** page [Details]
+    * Can **Renting** a home (if the current user is not the owner of the housing offer and if there are vacant housing)
+    * Can **Delete** or **Edit** housing depending on user's authentication (only for owner of the current offer for housing)
 
-* Guest (Not Logged In)
+* Guest (Not Logged In) :
     * Can access **Home** page.
     * Can access **Housing** for rent page.
     * Can access **Details** page.
@@ -48,23 +48,23 @@ The visitors can view the Home page and Housing for rent catalog with available 
 
 The Database of the Real Estate Agency application needs to support 2 entities:
 
-### User:
+### User :
 
-- Name - string (required),
-- Username - string (required),
-- Password - string (required),
+- **Name** - string (required),
+- **Username** - string (required),
+- **Password** - string (required),
 
-### Housing:
+### Housing :
 
-- Name - string (required),
-- Type - string (“Apartment”, “Villa”, “House”) required,
-- Year - number (required),
-- City – string (required),
-- Home Image - string (required),
-- Property Description - string (required),
-- Available pieces - number(required)
-- Rented a home - a collection of Users (reference to the User model)
-- Owner - object Id (reference to the User model)
+- **Name** - string (required),
+- **Type** - string (“Apartment”, “Villa”, “House”) required,
+- **Year** - number (required),
+- **City** – string (required),
+- Home **Image** - string (required),
+- Property **Description** - string (required),
+- Available **pieces** - number(required)
+- **Rented** a home - a collection of Users (reference to the User model)
+- **Owner** - object Id (reference to the User model)
 
 *Note:  When a user rents a home, their id is added to that collection (Rented a home) Implement the entities with the correct data types.*
 
@@ -78,7 +78,7 @@ Visualize the **last 3 added housing offers**. Each offer must show information 
 
 If there are NO housing offers in the database yet, display "There are no housing offers found…"
 
-![Home Page View](https://github.com/yveette/Real-Estate-Agency/blob/main/readme_files/home_page_not.png)
+![Home Page View](https://github.com/yveette/Real-Estate-Agency/blob/main/readme_files/home_page_not.jpg)
 
 ### Register Page (Logged Out User) 
 
@@ -104,7 +104,7 @@ List **all housing offers**. Each home must display information about the **home
 
 [Details] button should be a link to the details page for the current home.
 
-If there are NO housing offers in the database yet, display "There are no housing offers found... "
+If there are NO housing offers in the database yet, display *"There are no housing offers found... "*
 
 ### Details Page - (for logged in users and logged out users)
 
@@ -133,6 +133,7 @@ If there are no logged in user, no buttons should be displayed.
 
 <details>
     <summary>Details Page (logged in user and creator of the current offer)</summary>
+
 If the currently logged-in user is the owner (the user who created the home offer), he should see the [Delete] and [Edit] buttons.
 
 ![Details Page View](https://github.com/yveette/Real-Estate-Agency/blob/main/readme_files/details_2.png)
@@ -140,6 +141,7 @@ If the currently logged-in user is the owner (the user who created the home offe
 
 <details>
     <summary>Details Page (logged in user with available places)</summary>
+
 If the currently logged in user is not the owner (a user who is not the creator of this housing offer) and has not rented that housing, he should see a button like [Rent a home, available {available pieces} housing]. If there is at least 1 place left.
 
 ![Details Page View](https://github.com/yveette/Real-Estate-Agency/blob/main/readme_files/details_3.png)
@@ -147,6 +149,7 @@ If the currently logged in user is not the owner (a user who is not the creator 
 
 <details>
     <summary>Details Page (logged in user already rented this housing)</summary>
+
 If the currently logged in user is not the owner and has already rented the current home, he should see [You have already rent this home].
 
 ![Details Page View](https://github.com/yveette/Real-Estate-Agency/blob/main/readme_files/details_4.png)
@@ -154,6 +157,7 @@ If the currently logged in user is not the owner and has already rented the curr
 
 <details>
     <summary>Details Page (logged in user with no available pieces)</summary>
+
 If the currently logged-in user is not the owner and there are no available pieces for rent housing, he should see the [No Housing Available!].
 
 ![Details Page View](https://github.com/yveette/Real-Estate-Agency/blob/main/readme_files/details_5.png)
@@ -185,7 +189,7 @@ Each **owner** of the housing offer must be able to click on the [**Delete**] bu
 
 Each owner can edit **their housing offer**. Clicking the [**Edit**] button for a specific home on the details page should display the **Edit page**, all fields being populated with housing data. It contains a form with input fields for all relevant properties. If successful, redirect the user to the current housing details page.
 
-![Edit Page View](https://github.com/yveette/Real-Estate-Agency/blob/main/readme_files/edit_page.png)
+![Edit Page View](https://github.com/yveette/Real-Estate-Agency/blob/main/readme_files/edit_page.jpg)
 
 ### Search Page - Bonus
 
@@ -211,7 +215,7 @@ Use the following view for invalid paths:
 
 ## Validation and Error Handling
 
-The application should notify the users about result of their actions.
+The application should **notify** the users about result of their actions.
 
 In case of **error**, you should display div with class “**errorContainer**”
 
